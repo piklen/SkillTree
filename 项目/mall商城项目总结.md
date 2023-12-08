@@ -1760,7 +1760,6 @@ func Cors() gin.HandlerFunc {
 1. **创建 Gin 实例：** 应用程序首先创建一个 Gin 实例，作为整个应用的核心。
 
     ```Go
-    goCopy code
     package main
     
     import "github.com/gin-gonic/gin"
@@ -1775,24 +1774,22 @@ func Cors() gin.HandlerFunc {
         r.Run(":8080")
     }
     ```
-
+    
 1. **定义路由和处理函数：** Gin 使用路由来映射 HTTP 请求到相应的处理函数。开发者可以使用不同的 HTTP 方法（GET、POST、PUT、DELETE 等）和 URL 路径来定义路由规则，并指定相应的处理函数。
 
     ```Go
-    goCopy code
     // 示例路由定义
     r.GET("/hello", func(c *gin.Context) {
         c.JSON(200, gin.H{"message": "Hello, World!"})
     })
     ```
-
+    
 1. **启动服务：** 通过调用 `Run` 方法，Gin 框架会启动一个 HTTP 服务器，开始监听指定的端口，等待客户端请求。
 
     ```Go
-    goCopy code
     r.Run(":8080")
     ```
-
+    
 1. **处理请求和响应：** 当有 HTTP 请求到达时，Gin 框架会根据请求的路径和方法找到匹配的路由规则，并调用相应的处理函数。处理函数可以读取请求参数、执行业务逻辑，最终返回响应给客户端。
 
 Gin 框架相较于 Go 语言标准库中的 `http` 包有一些优点：
