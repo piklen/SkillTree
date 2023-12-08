@@ -1372,51 +1372,51 @@ address, err := addressDao.ListAddressByUid(uId)
 
 ### 1.postman该如何正确的发送请求？
 
-    1. 请求方式
-    
-        常见的请求方式有POST,GET,DELETE，但是一般使用的方式为`post`,`get`
-    
-        post:常用于从客户端上传信息
-    
-        get:常用于请求服务器某个路径下的某个资源，或者进行相关信息的查询。
-    
-        delete、put、options一般不会进行使用
-    
-    1. 请求内容
-    
-        一般GET方式用Params进行上传数据，并且上传的数据会直接在连接上展示。例如：`Key:key Value：myset`。则在请求链接上会有如下展示：`http://localhost:8080/scard?key=myset`，在服务端用gin框架解析时，可以使用`key := c.Query("key")`进行查询获取。
-    
-        当服务器需要进行token鉴权时，可以使用Authorization，常见的有Bearer Token，JWT Bearer,以及API Key,一般常用API Key，它可以自定义`Key`和`Value`，并且可以选择是将其加入进Header或者是Query Params。
-    
-        如果使用的是body进行传输数据，那么可以进行如下处理：
-    
-        1. **Form 表单数据**： 如果在Postman中以"form-data"形式发送请求，在Gin中可以使用 `c.PostForm` 方法来获取表单数据。
-    
-        2. **JSON 数据**： 如果在Postman中以"raw"格式发送JSON数据，在Gin中可以使用 `c.ShouldBindJSON` 方法来将JSON数据绑定到结构体中。Gin会自动解析JSON数据并填充到指定的结构体字段中。
-    
-        3. **Query 参数**： 如果在Postman中以"params"形式发送请求，在Gin中可以使用 `c.Query` 方法来获取查询参数。
-    
-        4. **Multipart/文件上传**： 如果在Postman中选择"form-data"并上传文件，在Gin中可以使用 `c.FormFile` 方法来处理文件上传。
-    
-        5. **X-www-form-urlencodea数据:**如果在Postman中选择"X-www-form-urlencodea"形式发送数据，gin可以使用
-    
-        ```Go
-        // 获取单个参数
-        value := c.PostForm("key")
-        ```
-    
-        ```Go
-        // 获取多个参数
-        values, _ := c.PostFormArray("key")
-        ```
-    
-        获取参数。
-    
-    1. postman的高级用法
-    
-        postman可以选择请求右侧的code,从而直接生成了请求代码。可以选择Documentation从而编辑API文档。
-    
-        postman提交文件，只能提交其工作目录下的内容，发送请求服务器才能读取的到
+1. 请求方式
+
+    常见的请求方式有POST,GET,DELETE，但是一般使用的方式为`post`,`get`
+
+    post:常用于从客户端上传信息
+
+    get:常用于请求服务器某个路径下的某个资源，或者进行相关信息的查询。
+
+    delete、put、options一般不会进行使用
+
+1. 请求内容
+
+    一般GET方式用Params进行上传数据，并且上传的数据会直接在连接上展示。例如：`Key:key Value：myset`。则在请求链接上会有如下展示：`http://localhost:8080/scard?key=myset`，在服务端用gin框架解析时，可以使用`key := c.Query("key")`进行查询获取。
+
+    当服务器需要进行token鉴权时，可以使用Authorization，常见的有Bearer Token，JWT Bearer,以及API Key,一般常用API Key，它可以自定义`Key`和`Value`，并且可以选择是将其加入进Header或者是Query Params。
+
+    如果使用的是body进行传输数据，那么可以进行如下处理：
+
+    1. **Form 表单数据**： 如果在Postman中以"form-data"形式发送请求，在Gin中可以使用 `c.PostForm` 方法来获取表单数据。
+
+    2. **JSON 数据**： 如果在Postman中以"raw"格式发送JSON数据，在Gin中可以使用 `c.ShouldBindJSON` 方法来将JSON数据绑定到结构体中。Gin会自动解析JSON数据并填充到指定的结构体字段中。
+
+    3. **Query 参数**： 如果在Postman中以"params"形式发送请求，在Gin中可以使用 `c.Query` 方法来获取查询参数。
+
+    4. **Multipart/文件上传**： 如果在Postman中选择"form-data"并上传文件，在Gin中可以使用 `c.FormFile` 方法来处理文件上传。
+
+    5. **X-www-form-urlencodea数据:**如果在Postman中选择"X-www-form-urlencodea"形式发送数据，gin可以使用
+
+    ```Go
+    // 获取单个参数
+    value := c.PostForm("key")
+    ```
+
+    ```Go
+    // 获取多个参数
+    values, _ := c.PostFormArray("key")
+    ```
+
+    获取参数。
+
+1. postman的高级用法
+
+    postman可以选择请求右侧的code,从而直接生成了请求代码。可以选择Documentation从而编辑API文档。
+
+    postman提交文件，只能提交其工作目录下的内容，发送请求服务器才能读取的到
 
 - 使用gin框架收到前端的数据该如何取进行提取？
 
@@ -1689,71 +1689,71 @@ address, err := addressDao.ListAddressByUid(uId)
 
 ### 2.使用跨域的原因是什么？跨域是怎么样实现的？跨域使用的注意点有哪些？
 
-    出于浏览器的同源策略限制。同源策略（Sameoriginpolicy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。所谓同源（即指在同一个域）就是两个页面具有相同的协议（protocol），主机（host）和端口号（port）。
-    
-    跨域的实现，通过特定的规则，放行特定的内容，从而实现
-    
-    ```Go
-    func Cors() gin.HandlerFunc {
-    	return func(c *gin.Context) {
-    		method := c.Request.Method               // 请求方法
-    		origin := c.Request.Header.Get("Origin") // 请求头部
-    		var headerKeys []string                  // 声明请求头keys
-    		for k := range c.Request.Header {
-    			headerKeys = append(headerKeys, k)
-    		}
-    		headerStr := strings.Join(headerKeys, ", ")
-    		if headerStr != "" {
-    			headerStr = fmt.Sprintf("access-control-allow-origin, access-control-allow-headers, %s", headerStr)
-    		} else {
-    			headerStr = "access-control-allow-origin, access-control-allow-headers"
-    		}
-    		if origin != "" {
-    			c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-    			c.Header("Access-Control-Allow-Origin", "*")                                       // 这是允许访问所有域
-    			c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE,UPDATE") // 服务器支持的所有跨域请求的方法,为了避免浏览次请求的多次'预检'请求
-    			//  header的类型
-    			c.Header("Access-Control-Allow-Headers", "Authorization, Content-Length, X-CSRF-Token, Token,session,X_Requested_With,Accept, Origin, Host, Connection, Accept-Encoding, Accept-Language,DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Pragma")
-    			// 允许跨域设置                                                                                                      可以返回其他子段
-    			c.Header("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers,Cache-Control,Content-Language,Content-Type,Expires,Last-Modified,Pragma,FooBar") // 跨域关键设置 让浏览器可以解析
-    			c.Header("Access-Control-Max-Age", "172800")                                                                                                                                                           // 缓存请求信息 单位为秒
-    			c.Header("Access-Control-Allow-Credentials", "false")                                                                                                                                                  //  跨域请求是否需要带cookie信息 默认设置为true
-    			c.Set("content-type", "application/json")                                                                                                                                                              // 设置返回格式是json
-    		}
-    		// 放行所有OPTIONS方法
-    		if method == "OPTIONS" {
-    			c.JSON(http.StatusOK, "Options Request!")
-    		}
-    		// 处理请求
-    		c.Next() //  处理请求
-    	}
-    }
-    
-    ```
-    
-    跨域的注意点有哪些?
-    
-    1. **安全性：** 跨域请求涉及到安全性的考虑，确保只有信任的域名可以访问你的资源。通过设置适当的 CORS 头，限制允许访问的域名，避免开放过大的权限。
-    
-    2. **敏感信息：** 不要在跨域请求中暴露敏感信息。浏览器会执行同源策略以保护用户数据，但跨域请求可能导致一些敏感信息泄漏的风险。确保在跨域请求中不暴露不应该被公开的数据。
-    
-    3. **预检请求（Preflight Request）：** 对于一些复杂的跨域请求，浏览器会先发送一个 OPTIONS 请求（预检请求），以确认服务器是否支持实际请求所需的方法和头信息。服务器需要正确处理这个预检请求。
-    
-    4. **Cookie：** 跨域请求默认是不携带 Cookie 的，如果需要在跨域请求中发送 Cookie，需要确保服务器允许并在响应中设置 `Access-Control-Allow-Credentials` 头为 `true`，同时在客户端请求中设置 `withCredentials` 为 `true`。
-    
-    5. **方法限制：** 默认情况下，跨域请求只允许简单请求方法（GET、POST、HEAD），如果使用其他方法（如PUT、DELETE），会触发预检请求。服务器需要正确处理预检请求并在响应中指定允许的方法。
-    
-    6. **XSS（Cross-Site Scripting）攻击：** 跨域请求可能导致 XSS 攻击的风险。确保在处理跨域请求时，对输入进行适当的验证和转义，以防止恶意脚本的注入。
-    
-    7. **WebSocket 安全性：** 如果使用 WebSocket 进行跨域通信，同样需要考虑安全性问题。确保 WebSocket 连接通过加密（wss://）传输，以防止信息被窃听。
-    
-    8. **跨域资源共享策略的配置：** 在服务器端配置 CORS 头时，要仔细考虑允许的域名、方法和头信息。过于宽松的配置可能导致安全风险。
+出于浏览器的同源策略限制。同源策略（Sameoriginpolicy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。所谓同源（即指在同一个域）就是两个页面具有相同的协议（protocol），主机（host）和端口号（port）。
+
+跨域的实现，通过特定的规则，放行特定的内容，从而实现
+
+```Go
+func Cors() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		method := c.Request.Method               // 请求方法
+		origin := c.Request.Header.Get("Origin") // 请求头部
+		var headerKeys []string                  // 声明请求头keys
+		for k := range c.Request.Header {
+			headerKeys = append(headerKeys, k)
+		}
+		headerStr := strings.Join(headerKeys, ", ")
+		if headerStr != "" {
+			headerStr = fmt.Sprintf("access-control-allow-origin, access-control-allow-headers, %s", headerStr)
+		} else {
+			headerStr = "access-control-allow-origin, access-control-allow-headers"
+		}
+		if origin != "" {
+			c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+			c.Header("Access-Control-Allow-Origin", "*")                                       // 这是允许访问所有域
+			c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE,UPDATE") // 服务器支持的所有跨域请求的方法,为了避免浏览次请求的多次'预检'请求
+			//  header的类型
+			c.Header("Access-Control-Allow-Headers", "Authorization, Content-Length, X-CSRF-Token, Token,session,X_Requested_With,Accept, Origin, Host, Connection, Accept-Encoding, Accept-Language,DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Pragma")
+			// 允许跨域设置                                                                                                      可以返回其他子段
+			c.Header("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers,Cache-Control,Content-Language,Content-Type,Expires,Last-Modified,Pragma,FooBar") // 跨域关键设置 让浏览器可以解析
+			c.Header("Access-Control-Max-Age", "172800")                                                                                                                                                           // 缓存请求信息 单位为秒
+			c.Header("Access-Control-Allow-Credentials", "false")                                                                                                                                                  //  跨域请求是否需要带cookie信息 默认设置为true
+			c.Set("content-type", "application/json")                                                                                                                                                              // 设置返回格式是json
+		}
+		// 放行所有OPTIONS方法
+		if method == "OPTIONS" {
+			c.JSON(http.StatusOK, "Options Request!")
+		}
+		// 处理请求
+		c.Next() //  处理请求
+	}
+}
+
+```
+
+跨域的注意点有哪些?
+
+1. **安全性：** 跨域请求涉及到安全性的考虑，确保只有信任的域名可以访问你的资源。通过设置适当的 CORS 头，限制允许访问的域名，避免开放过大的权限。
+
+2. **敏感信息：** 不要在跨域请求中暴露敏感信息。浏览器会执行同源策略以保护用户数据，但跨域请求可能导致一些敏感信息泄漏的风险。确保在跨域请求中不暴露不应该被公开的数据。
+
+3. **预检请求（Preflight Request）：** 对于一些复杂的跨域请求，浏览器会先发送一个 OPTIONS 请求（预检请求），以确认服务器是否支持实际请求所需的方法和头信息。服务器需要正确处理这个预检请求。
+
+4. **Cookie：** 跨域请求默认是不携带 Cookie 的，如果需要在跨域请求中发送 Cookie，需要确保服务器允许并在响应中设置 `Access-Control-Allow-Credentials` 头为 `true`，同时在客户端请求中设置 `withCredentials` 为 `true`。
+
+5. **方法限制：** 默认情况下，跨域请求只允许简单请求方法（GET、POST、HEAD），如果使用其他方法（如PUT、DELETE），会触发预检请求。服务器需要正确处理预检请求并在响应中指定允许的方法。
+
+6. **XSS（Cross-Site Scripting）攻击：** 跨域请求可能导致 XSS 攻击的风险。确保在处理跨域请求时，对输入进行适当的验证和转义，以防止恶意脚本的注入。
+
+7. **WebSocket 安全性：** 如果使用 WebSocket 进行跨域通信，同样需要考虑安全性问题。确保 WebSocket 连接通过加密（wss://）传输，以防止信息被窃听。
+
+8. **跨域资源共享策略的配置：** 在服务器端配置 CORS 头时，要仔细考虑允许的域名、方法和头信息。过于宽松的配置可能导致安全风险。
 
 
 
 ### 3.MySQL如何进行预编译防止SQL注入？
 
-    - 使用预编译语句和参数化查询的方式来防止 SQL 注入攻击。预编译语句可以确保用户输入的数据不会被直接拼接到 SQL 查询语句中，从而降低 SQL 注入的风险。
+- 使用预编译语句和参数化查询的方式来防止 SQL 注入攻击。预编译语句可以确保用户输入的数据不会被直接拼接到 SQL 查询语句中，从而降低 SQL 注入的风险。
 
 ### 4.gin框架的运行过程是什么？相较于go语言中的http包，有什么样的优点？
 
