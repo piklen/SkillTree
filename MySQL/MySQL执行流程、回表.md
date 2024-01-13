@@ -291,7 +291,16 @@ mysql> explain select id,name,age from students where age>20;
 
 ![image-20240113124615436](https://hruoxuan.oss-cn-shenzhen.aliyuncs.com/image-20240113124615436.png)
 
+参考资料：
+
+[MySQL 回表](https://www.cnblogs.com/taojietaoge/p/16167188.html)
+
+[MySQL8.0的参数event_scheduler默认是ON，请注意一些坑](https://www.cnblogs.com/fander/p/10309687.html)
+
+[执行一条 select 语句，期间发生了什么？](https://xiaolincoding.com/mysql/base/how_select.html)
+
 展示表信息的几种方式：
+
 ```mysql
 mysql> DESCRIBE students;
 +------------+-----------------+------+-----+---------+----------------+
